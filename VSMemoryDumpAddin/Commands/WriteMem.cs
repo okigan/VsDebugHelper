@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using EnvDTE;
 using EnvDTE80;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace VSMemoryDumpAddin.Commands {
-    class WriteMem : ICommand{
+    class WriteMem : ICommand {
         #region members
         private DTE2 _application;
         private AddIn _addin;
@@ -28,7 +30,20 @@ namespace VSMemoryDumpAddin.Commands {
             , ref object variantOut
             , ref bool handled
         ) {
-            throw new NotImplementedException();
+
+            switch (executeOption) {
+            case vsCommandExecOption.vsCommandExecOptionDoDefault: {
+                string fileName = @"c:\temp\test.txt";
+                using (FileStream fs = new FileStream(fileName, FileMode.Create)) {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    bf.Serialize(fs, "data");
+                }
+
+                var commandWindow = _application.Windows.Item(EnvDTE.Constants.vsWindowKindCommandWindow).Object as CommandWindow;
+
+                commandWindow.OutputString("SavedBPFormat\r\n");
+            } break;
+            }
         }
 
         void ICommand.QueryStatus(string cmdName
@@ -37,12 +52,12 @@ namespace VSMemoryDumpAddin.Commands {
             , ref object commandText
         ) {
             switch (neededText) {
-                case vsCommandStatusTextWanted.vsCommandStatusTextWantedNone: {
-                        if (_application.Debugger.DebuggedProcesses.Count > 0) {
-                            statusOption = vsCommandStatus.vsCommandStatusSupported
-                                | vsCommandStatus.vsCommandStatusEnabled;
-                        }
-                    } break;
+            case vsCommandStatusTextWanted.vsCommandStatusTextWantedNone: {
+                if (_application.Debugger.DebuggedProcesses.Count > 0) {
+                    statusOption = vsCommandStatus.vsCommandStatusSupported
+                        | vsCommandStatus.vsCommandStatusEnabled;
+                }
+            } break;
             }
 
         }

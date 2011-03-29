@@ -1,80 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Globalization;
+using System.IO;
 using EnvDTE;
 using EnvDTE80;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using Microsoft.VisualStudio.Debugger.Interop;
-using System.Runtime.InteropServices;
-using System.Reflection;
-using System.Globalization;
 
 
 
 namespace VSMemoryDumpAddin.Commands {
-    class Sys {
-        [DllImport("kernel32.dll")]
-        public static extern IntPtr OpenProcess(
-            UInt32 dwDesiredAccess,
-            Int32 bInheritHandle,
-            UInt32 dwProcessId
-            );
-
-        [DllImport("kernel32.dll")]
-        public static extern Int32 ReadProcessMemory(
-            IntPtr hProcess,
-            IntPtr lpBaseAddress,
-            [In, Out] byte[] buffer,
-            UInt32 size,
-            out IntPtr lpNumberOfBytesRead
-            );
-
-        [DllImport("kernel32.dll")]
-        public static extern Int32 CloseHandle(
-            IntPtr hObject
-            );
-    }
-
-    class Util {
-        public static Type GetExcelTypeForComObject(object excelComObject, Type type) {
-            // enum all the types defined in the interop assembly
-            System.Reflection.Assembly assembly =
-            System.Reflection.Assembly.GetAssembly(type);
-
-            return GetExcelTypeForComObject(excelComObject, assembly);
-        }
-
-        public static Type GetExcelTypeForComObject(object excelComObject, Assembly assembly) {
-            return GetExcelTypeForComObject(excelComObject, assembly.GetTypes());
-        }
-        public static Type GetExcelTypeForComObject(object excelComObject, Type[] types) {
-            // get the com object and fetch its IUnknown
-            IntPtr iunkwn = Marshal.GetIUnknownForObject(excelComObject);
-
-            // find the first implemented interop type
-            foreach (Type currType in types) {
-                // get the iid of the current type
-                Guid iid = currType.GUID;
-                if (!currType.IsInterface || iid == Guid.Empty) {
-                    // com interop type must be an interface with valid iid
-                    continue;
-                }
-
-                // query supportability of current interface on object
-                IntPtr ipointer = IntPtr.Zero;
-                Marshal.QueryInterface(iunkwn, ref iid, out ipointer);
-
-                if (ipointer != IntPtr.Zero) {
-                    // yeah, that’s the one we’re after
-                    return currType;
-                }
-            }
-
-            // no implemented type found
-            return null;
-        }
-    }
 
     class WriteMem : ICommand {
         #region members
@@ -84,16 +17,16 @@ namespace VSMemoryDumpAddin.Commands {
 
         #region ICommand Members
 
-        void ICommand.Initialize(EnvDTE80.DTE2 application, EnvDTE.AddIn addin) {
+        public virtual void Initialize(DTE2 application, EnvDTE.AddIn addin) {
             _application = application;
             _addin = addin;
         }
 
-        string ICommand.CommandText {
+        public virtual string CommandText {
             get { return "writemem"; }
         }
 
-        void ICommand.Exec(string cmdName
+        public virtual void Exec(string cmdName
             , vsCommandExecOption executeOption
             , ref object variantIn
             , ref object variantOut
@@ -111,49 +44,83 @@ namespace VSMemoryDumpAddin.Commands {
 
                 string commandline = variantIn as string;
 
-                char[]  sp = new char[]{' ', '\t'};
+                char[] sp = new char[] { ' ', '\t' };
                 string[] argv = commandline.Split(sp);
 
-                if (argv.Length != 3) {
-                    throw new NotSupportedException();
-                }
-
-
-
-                string fileName = argv[0];
-                string variableOrAddress = argv[1];
-                string variableOrSize = argv[2];
-
-                var variableOrAddressExp = _application.Debugger.GetExpression(variableOrAddress, false, 100);
-                var variableOrSizeExp = _application.Debugger.GetExpression(variableOrSize, true, 100);
-
-                int processId = _application.Debugger.CurrentProcess.ProcessID;
-
-                var process = System.Diagnostics.Process.GetProcessById(processId);
-                var pmr = new ProcessMemoryReaderLib.ProcessMemoryReader();
-                pmr.ReadProcess = process;
-                pmr.OpenProcess();
-                int bytesRead = 0;
-
-                int address = 0;
-                CallTryParse(variableOrAddressExp.Value, NumberStyles.HexNumber, out address);
-                byte[] bbb = pmr.ReadProcessMemory((IntPtr) address
-                    , uint.Parse(variableOrSizeExp.Value)
-                    ,  out bytesRead
-                );
-
-
-                //variableOrAddressExp.IsValidValue 
-
-                using (FileStream fs = new FileStream(fileName, FileMode.Create)) {
-                    fs.Write(bbb, 0, bbb.Length);
-                }
+                bool bRet = ExecuteDefault(argv);
 
                 var commandWindow = _application.Windows.Item(EnvDTE.Constants.vsWindowKindCommandWindow).Object as CommandWindow;
 
-                commandWindow.OutputString("SavedBPFormat\r\n");
+                commandWindow.OutputString(CommandText + " " + (bRet ? "Succeded" : "Failed") + "\r\n");
             } break;
             }
+        }
+
+        public virtual void QueryStatus(string cmdName
+            , vsCommandStatusTextWanted neededText
+            , ref vsCommandStatus statusOption
+            , ref object commandText
+        ) {
+            switch (neededText) {
+            case vsCommandStatusTextWanted.vsCommandStatusTextWantedNone: {
+                if (null != _application.Debugger && _application.Debugger.DebuggedProcesses.Count > 0) {
+                    statusOption = vsCommandStatus.vsCommandStatusSupported
+                        | vsCommandStatus.vsCommandStatusEnabled;
+                }
+            } break;
+            }
+
+        }
+
+        #endregion
+
+        #region internal
+        private bool ExecuteDefault(string[] argv) {
+            if (argv.Length != 3) {
+                throw new ArgumentException();
+            }
+
+            string fileName = argv[0];
+            string variableOrAddress = argv[1];
+            string variableOrSize = argv[2];
+
+            var variableOrAddressExp = _application.Debugger.GetExpression(variableOrAddress, false, 100);
+            var variableOrSizeExp = _application.Debugger.GetExpression(variableOrSize, true, 100);
+            int processId = _application.Debugger.CurrentProcess.ProcessID;
+
+            if (!variableOrAddressExp.IsValidValue || !variableOrSizeExp.IsValidValue)
+                return false;
+
+            int fromAddress = 0;
+            int lengthToRead = 0;
+            bool bRet = true;
+            //TODO: add more versatile robust expression handling
+            bRet = bRet && CallTryParse(variableOrAddressExp.Value, NumberStyles.HexNumber, out fromAddress);
+            bRet = bRet && CallTryParse(variableOrSizeExp.Value, NumberStyles.Integer, out lengthToRead);
+
+            if (!bRet) {
+                return bRet;
+            }
+
+            IntPtr handle = NativeApi.OpenProcess(NativeApi.PROCESS_VM_READ, 0, (uint)processId);
+
+            using (FileStream fs = new FileStream(fileName, FileMode.Create)) {
+                byte[] buffer = new byte[4096];
+                IntPtr read;
+                for (int i = 0; i < lengthToRead; i += read.ToInt32()) {
+                    NativeApi.ReadProcessMemory(handle
+                        , (IntPtr)(fromAddress + i)
+                        , buffer
+                        , (uint)Math.Min(lengthToRead - i, buffer.Length)
+                        , out read
+                    );
+                    fs.Write(buffer, 0, read.ToInt32());
+                }
+            }
+
+            NativeApi.CloseHandle(handle);
+
+            return true;
         }
 
         private static bool CallTryParse(string stringToConvert, NumberStyles styles, out int number) {
@@ -165,32 +132,17 @@ namespace VSMemoryDumpAddin.Commands {
             else
                 provider = CultureInfo.InvariantCulture;
 
-            bool result = Int32.TryParse(stringToConvert, styles,
-                                         provider, out number);
-            return result;
-            //if (result)
-            //    Console.WriteLine("Converted '{0}' to {1}.", stringToConvert, number);
-            //else
-            //    Console.WriteLine("Attempted conversion of '{0}' failed.",
-            //                      Convert.ToString(stringToConvert));
-        }
+            bool result = Int32.TryParse(stringToConvert, styles, provider, out number);
 
-        void ICommand.QueryStatus(string cmdName
-            , vsCommandStatusTextWanted neededText
-            , ref vsCommandStatus statusOption
-            , ref object commandText
-        ) {
-            switch (neededText) {
-            case vsCommandStatusTextWanted.vsCommandStatusTextWantedNone: {
-                if (_application.Debugger.DebuggedProcesses.Count > 0) {
-                    statusOption = vsCommandStatus.vsCommandStatusSupported
-                        | vsCommandStatus.vsCommandStatusEnabled;
-                }
-            } break;
+            if (false == result && (styles & NumberStyles.AllowHexSpecifier) != 0) {
+                string substring = stringToConvert.Substring(2);
+
+                result = Int32.TryParse(substring, styles, provider, out number);
+
             }
 
+            return result;
         }
-
         #endregion
     }
 }

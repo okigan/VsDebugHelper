@@ -101,6 +101,7 @@ namespace VSMemoryDumpAddin.Commands {
                 NativeApi.PROCESS_VM_OPERATION
                 | NativeApi.PROCESS_VM_WRITE
                 | NativeApi.PROCESS_VM_READ
+                | NativeApi.PROCESS_QUERY_INFORMATION
                 , 0
                 , (uint)processId
             );
@@ -110,6 +111,17 @@ namespace VSMemoryDumpAddin.Commands {
                 int read;
                 for (int i = 0; i < lengthToRead; i += read) {
                     read = fs.Read(buffer, 0, Math.Min(lengthToRead - i, buffer.Length));
+
+                    NativeApi.MEMORY_BASIC_INFORMATION x = new NativeApi.MEMORY_BASIC_INFORMATION();
+                    bool b = NativeApi.VirtualQueryEx(
+                          handle
+                        , (IntPtr)(toAddress + i)
+                        , out x
+                        , (uint)System.Runtime.InteropServices.Marshal.SizeOf(x)
+
+                    );
+
+
 
                     int written;
                     bool bret = NativeApi.WriteProcessMemory(handle

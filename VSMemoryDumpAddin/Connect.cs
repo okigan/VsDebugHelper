@@ -10,7 +10,7 @@ namespace VSMemoryDumpAddin {
     /// <seealso class='IDTExtensibility2' />
     public class Connect : IDTExtensibility2, IDTCommandTarget {
         #region private
-        private DTE2 _applicationObject;
+        private DTE2 _application;
         private AddIn _addInInstance;
 
         private List<ICommand> _commands = new List<ICommand>();
@@ -35,7 +35,7 @@ namespace VSMemoryDumpAddin {
         /// <param term='addInInst'>Object representing this Add-in.</param>
         /// <seealso class='IDTExtensibility2' />
         void IDTExtensibility2.OnConnection(object application, ext_ConnectMode connectMode, object addInInst, ref Array custom) {
-            _applicationObject = (DTE2)application;
+            _application = (DTE2)application;
             _addInInstance = (AddIn)addInInst;
 
             _InitializeCommands();
@@ -46,7 +46,7 @@ namespace VSMemoryDumpAddin {
         private void _InitializeCommands() {
             try {
                 foreach (var c in _commands) {
-                    c.Initialize(_applicationObject, _addInInstance);
+                    c.Initialize(_application, _addInInstance);
                 }
             } catch (NotImplementedException e) {
                 System.Diagnostics.Debugger.Log(0, "Diag", e.ToString());
@@ -56,7 +56,7 @@ namespace VSMemoryDumpAddin {
         private void _ConnectCommands() {
             try {
 
-                Commands2 cmds = _applicationObject.Commands as Commands2;
+                Commands2 cmds = _application.Commands as Commands2;
                 vsCommandStatus statusValue =
                     vsCommandStatus.vsCommandStatusSupported
                     | vsCommandStatus.vsCommandStatusEnabled;
@@ -128,7 +128,13 @@ namespace VSMemoryDumpAddin {
             _vsCommandTextToCommandMap.TryGetValue(cmdName, out command);
 
             if (null != command) {
-                command.Exec(cmdName, executeOption, ref variantIn, ref variantOut, ref handled);
+                try {
+                    command.Exec(cmdName, executeOption, ref variantIn, ref variantOut, ref handled);
+                }catch(Exception e){
+                    var commandWindow = _application.Windows.Item(EnvDTE.Constants.vsWindowKindCommandWindow).Object as CommandWindow;
+
+                    commandWindow.OutputString(cmdName + " failed with exception: " + e.ToString());
+                }
             }
         }
 

@@ -33,7 +33,30 @@ namespace VSMemoryDumpAddin.Commands {
 
             switch (executeOption) {
             case vsCommandExecOption.vsCommandExecOptionDoDefault: {
-                string fileName = @"c:\temp\test.txt";
+                //in future make this behave as windbg http://msdn.microsoft.com/en-us/library/ff566176(v=vs.85).aspx
+                //for now lets just make it as:
+                // filename address size
+
+                string commandline = variantIn as string;
+
+                char[]  sp = new char[]{' ', '\t'};
+                string[] argv = commandline.Split(sp);
+
+                if (argv.Length != 3) {
+                    throw new NotSupportedException();
+                }
+
+
+
+                string fileName = argv[0];
+                string variableOrAddress = argv[1];
+                string variableOrSize = argv[2];
+
+                var variableOrAddressExp = _application.Debugger.GetExpression(variableOrAddress, false, 100);
+                var variableOrSizeExp = _application.Debugger.GetExpression(variableOrSize, true, 100);
+
+                //variableOrAddressExp.IsValidValue 
+
                 using (FileStream fs = new FileStream(fileName, FileMode.Create)) {
                     BinaryFormatter bf = new BinaryFormatter();
                     bf.Serialize(fs, "data");

@@ -90,8 +90,8 @@ namespace VSMemoryDumpAddin.Commands {
             int lengthToRead = 0;
             bool bRet = true;
             //TODO: add more versatile robust expression handling
-            bRet = bRet && CallTryParse(variableOrAddressExp.Value, NumberStyles.HexNumber, out toAddress);
-            bRet = bRet && CallTryParse(variableOrSizeExp.Value, NumberStyles.Integer, out lengthToRead);
+            bRet = bRet && Util.CallTryParse(variableOrAddressExp.Value, NumberStyles.HexNumber, out toAddress);
+            bRet = bRet && Util.CallTryParse(variableOrSizeExp.Value, NumberStyles.Integer, out lengthToRead);
 
             if (!bRet) {
                 return bRet;
@@ -135,27 +135,7 @@ namespace VSMemoryDumpAddin.Commands {
             return true;
         }
 
-        private static bool CallTryParse(string stringToConvert, NumberStyles styles, out int number) {
-            CultureInfo provider;
 
-            // If currency symbol is allowed, use en-US culture.
-            if ((styles & NumberStyles.AllowCurrencySymbol) > 0)
-                provider = new CultureInfo("en-US");
-            else
-                provider = CultureInfo.InvariantCulture;
-
-            bool result = Int32.TryParse(stringToConvert, styles, provider, out number);
-
-            if (false == result && (styles & NumberStyles.AllowHexSpecifier) != 0) {
-                string substring = stringToConvert.Substring(2);
-
-                result = Int32.TryParse(substring, styles, provider, out number);
-
-            }
-
-            return result;
-
-        }
 
         #endregion
     }

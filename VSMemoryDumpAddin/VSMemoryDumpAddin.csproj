@@ -38,7 +38,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Visual Studio 2010\Addins\</OutputPath>
+    <OutputPath>C:\Users\Administrator\Documents\Visual Studio 2008\Addins\</OutputPath>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <WarningLevel>4</WarningLevel>
@@ -69,13 +69,14 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="NativeApi.cs" />
+    <Compile Include="Util.cs" />
     <Compile Include="Commands\ReadMem.cs" />
     <Compile Include="Commands\WriteMem.cs" />
     <Compile Include="Connect.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ICommand.cs" />
-    <Compile Include="ProcessMemoryReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CommandBar.resx" />

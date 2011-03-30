@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSMemoryDumpAddin", "VSMemoryDumpAddin\VSMemoryDumpAddin.csproj", "{9AF7DA46-3FF5-49A2-8BA2-C6B4C432C26D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSDebugHelper", "VSMemoryDumpAddin\VSDebugHelper.csproj", "{9AF7DA46-3FF5-49A2-8BA2-C6B4C432C26D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

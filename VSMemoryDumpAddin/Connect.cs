@@ -154,8 +154,10 @@ public class VSDebugHelper : IDTExtensibility2, IDTCommandTarget {
 
 
             foreach (var c in _commands) {
-                Command command = _AddIndividualCommand(cmds, statusValue, c);
-
+                Command command = cmds.Item(this.GetType().Name + "." + c.CommandText, -1);
+                if (null == command) {
+                    command = _AddIndividualCommand(cmds, statusValue, c);
+                }
                 _vsCommandTextToCommandMap.Add(command.Name, c);
             }
         } catch (NotImplementedException e) {
@@ -185,7 +187,7 @@ public class VSDebugHelper : IDTExtensibility2, IDTCommandTarget {
 
     private void _DeleteIndividualCommand(Commands2 cmds, String commandString) {
         try {
-            Command cmdToDelete = cmds.Item(commandString, -1);
+            Command cmdToDelete = cmds.Item(this.GetType().Name + commandString, -1);
             cmdToDelete.Delete();
         } catch (ArgumentException) {
             // The ArgumentException will be thrown if the command does not

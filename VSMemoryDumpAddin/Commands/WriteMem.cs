@@ -102,26 +102,12 @@ namespace VSMemoryDumpAddin.Commands {
                 return bRet;
             }
 
-            IntPtr handle = NativeApi.OpenProcess(NativeApi.PROCESS_VM_READ, 0, (uint)processId);
-
-            using (FileStream fs = new FileStream(fileName, FileMode.Create)) {
-                byte[] buffer = new byte[4096];
-                IntPtr read;
-                for (int i = 0; i < lengthToRead; i += read.ToInt32()) {
-                    NativeApi.ReadProcessMemory(handle
-                        , (IntPtr)(fromAddress + i)
-                        , buffer
-                        , (uint)Math.Min(lengthToRead - i, buffer.Length)
-                        , out read
-                    );
-                    fs.Write(buffer, 0, read.ToInt32());
-                }
-            }
-
-            NativeApi.CloseHandle(handle);
+            Util.WriteMemoryToFile(fileName, processId, fromAddress, lengthToRead);
 
             return true;
         }
+
+
 
         #endregion
     }

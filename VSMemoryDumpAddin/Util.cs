@@ -5,9 +5,58 @@ using System.Text;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Globalization;
+using System.IO;
 
 namespace VSMemoryDumpAddin {
     class Util {
+        public static void WriteMemoryToFile(string fileName, int processId, int fromAddress, int lengthToRead) {
+            IntPtr handle = NativeApi.OpenProcess(NativeApi.PROCESS_VM_READ, 0, (uint)processId);
+
+            using (FileStream fs = new FileStream(fileName, FileMode.Create)) {
+                byte[] buffer = new byte[4096];
+                IntPtr read;
+                for (int i = 0; i < lengthToRead; i += read.ToInt32()) {
+                    NativeApi.ReadProcessMemory(handle
+                        , (IntPtr)(fromAddress + i)
+                        , buffer
+                        , (uint)Math.Min(lengthToRead - i, buffer.Length)
+                        , out read
+                    );
+                    fs.Write(buffer, 0, read.ToInt32());
+                }
+            }
+
+            NativeApi.CloseHandle(handle);
+        }
+
+        public static void ReadFileToMemory(string fileName, int processId, int toAddress, int lengthToRead) {
+            IntPtr handle = NativeApi.OpenProcess(
+                NativeApi.PROCESS_VM_OPERATION
+                | NativeApi.PROCESS_VM_WRITE
+                //| NativeApi.PROCESS_VM_READ
+                //| NativeApi.PROCESS_QUERY_INFORMATION
+                , 0
+                , (uint)processId
+            );
+
+            using (FileStream fs = new FileStream(fileName, FileMode.Open)) {
+                byte[] buffer = new byte[4096];
+                int read;
+                for (int i = 0; i < lengthToRead; i += read) {
+                    read = fs.Read(buffer, 0, Math.Min(lengthToRead - i, buffer.Length));
+
+                    int written;
+                    bool bret = NativeApi.WriteProcessMemory(handle
+                        , (IntPtr)(toAddress + i)
+                        , buffer
+                        , (uint)read
+                        , out written
+                    );
+                }
+            }
+
+            NativeApi.CloseHandle(handle);
+        }
 
         public static bool CallTryParse(string stringToConvert, NumberStyles styles, out int number) {
             CultureInfo provider;

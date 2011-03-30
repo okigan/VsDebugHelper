@@ -39,53 +39,11 @@ namespace VSMemoryDumpAddin {
             _addInInstance = (AddIn)addInInst;
 
             _InitializeCommands();
+            _DeleteCommands();
             _ConnectCommands();
 
         }
 
-        private void _InitializeCommands() {
-            try {
-                foreach (var c in _commands) {
-                    c.Initialize(_application, _addInInstance);
-                }
-            } catch (NotImplementedException e) {
-                System.Diagnostics.Debugger.Log(0, "Diag", e.ToString());
-            }
-        }
-
-        private void _ConnectCommands() {
-            try {
-
-                Commands2 cmds = _application.Commands as Commands2;
-                vsCommandStatus statusValue =
-                    vsCommandStatus.vsCommandStatusSupported
-                    | vsCommandStatus.vsCommandStatusEnabled;
-
-
-                foreach (var c in _commands) {
-                    object[] contextGUIDS = new object[] { };
-                    vsCommandStyle style = vsCommandStyle.vsCommandStylePict;
-
-                    String buttonText = c.CommandText;
-                    String toolTip = c.CommandText;
-                    Command command = cmds.AddNamedCommand2(_addInInstance
-                        , c.CommandText
-                        , buttonText
-                        , toolTip
-                        , false
-                        , null
-                        , ref contextGUIDS
-                        , (int)statusValue
-                        , (int)style
-                        , vsCommandControlType.vsCommandControlTypeButton
-                    );
-
-                    _vsCommandTextToCommandMap.Add(command.Name, c);
-                }
-            } catch (NotImplementedException e) {
-                System.Diagnostics.Debugger.Log(0, "Diag", e.ToString());
-            }
-        }
 
         /// <summary>Implements the OnDisconnection method of the IDTExtensibility2 interface. Receives notification that the Add-in is being unloaded.</summary>
         /// <param term='disconnectMode'>Describes how the Add-in is being unloaded.</param>
@@ -130,7 +88,7 @@ namespace VSMemoryDumpAddin {
             if (null != command) {
                 try {
                     command.Exec(cmdName, executeOption, ref variantIn, ref variantOut, ref handled);
-                }catch(Exception e){
+                } catch (Exception e) {
                     var commandWindow = _application.Windows.Item(EnvDTE.Constants.vsWindowKindCommandWindow).Object as CommandWindow;
 
                     commandWindow.OutputString(cmdName + " failed with exception: " + e.ToString());
@@ -157,7 +115,77 @@ namespace VSMemoryDumpAddin {
         #endregion
 
         #region private
- 
+        private void _InitializeCommands() {
+            try {
+                foreach (var c in _commands) {
+                    c.Initialize(_application, _addInInstance);
+                }
+            } catch (NotImplementedException e) {
+                System.Diagnostics.Debugger.Log(0, "Diag", e.ToString());
+            }
+        }
+
+
+        private void _DeleteCommands() {
+            try {
+                Commands2 cmds = _application.Commands as Commands2;
+
+                foreach (var c in _commands) {
+                    _DeleteIndividualCommand(cmds, c.CommandText);
+                }
+            } catch (NotImplementedException e) {
+                System.Diagnostics.Debugger.Log(0, "Diag", e.ToString());
+            }
+        }
+
+        private void _ConnectCommands() {
+            try {
+                Commands2 cmds = _application.Commands as Commands2;
+                vsCommandStatus statusValue =
+                    vsCommandStatus.vsCommandStatusSupported
+                    | vsCommandStatus.vsCommandStatusEnabled;
+
+
+                foreach (var c in _commands) {
+                    Command command = _AddIndividualCommand(cmds, statusValue, c);
+
+                    _vsCommandTextToCommandMap.Add(command.Name, c);
+                }
+            } catch (NotImplementedException e) {
+                System.Diagnostics.Debugger.Log(0, "Diag", e.ToString());
+            }
+        }
+
+        private Command _AddIndividualCommand(Commands2 cmds, vsCommandStatus statusValue, ICommand c) {
+            object[] contextGUIDS = new object[] { };
+            vsCommandStyle style = vsCommandStyle.vsCommandStylePict;
+
+            String buttonText = c.CommandText;
+            String toolTip = c.CommandText;
+            Command command = cmds.AddNamedCommand2(_addInInstance
+                , c.CommandText
+                , buttonText
+                , toolTip
+                , false
+                , null
+                , ref contextGUIDS
+                , (int)statusValue
+                , (int)style
+                , vsCommandControlType.vsCommandControlTypeButton
+            );
+            return command;
+        }
+
+        private void _DeleteIndividualCommand(Commands2 cmds, String commandString) {
+            try {
+                Command cmdToDelete = cmds.Item(commandString, -1);
+                cmdToDelete.Delete();
+            } catch (ArgumentException) {
+                // The ArgumentException will be thrown if the command does not
+                // exist. It is fine to eat this exception as that means it's 
+                // the first run of this add in.
+            }
+        }
         #endregion
 
     }

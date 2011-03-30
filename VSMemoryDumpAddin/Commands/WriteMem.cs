@@ -5,9 +5,7 @@ using EnvDTE;
 using EnvDTE80;
 using Microsoft.VisualStudio.Debugger.Interop;
 
-
-
-namespace VSMemoryDumpAddin.Commands {
+namespace VSMemoryDump.Commands {
 
     class WriteMem : ICommand {
         #region members

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
 
-namespace VSMemoryDumpAddin {
+namespace VSMemoryDump {
     class NativeApi {
         public const uint PROCESS_QUERY_INFORMATION = (0x0400);
         public const uint PROCESS_VM_OPERATION = 0x0008;

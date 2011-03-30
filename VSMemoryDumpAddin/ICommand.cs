@@ -4,7 +4,7 @@ using System.Text;
 using EnvDTE;
 using EnvDTE80;
 
-namespace VSMemoryDumpAddin {
+namespace VSMemoryDump {
     interface ICommand {
 
         void Initialize(DTE2 application, AddIn addin);

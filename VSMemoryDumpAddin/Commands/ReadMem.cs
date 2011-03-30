@@ -5,13 +5,13 @@ using EnvDTE;
 using EnvDTE80;
 using Microsoft.VisualStudio.Debugger.Interop;
 
-namespace VSMemoryDumpAddin.Commands {
+namespace VSMemoryDump.Commands {
+
     class ReadMem : ICommand {
         #region members
         private DTE2 _application;
         private AddIn _addin;
         #endregion
-
 
         #region ICommand Members
 

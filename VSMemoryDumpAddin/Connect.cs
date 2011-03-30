@@ -8,7 +8,7 @@ using VSMemoryDump;
 
 /// <summary>The object for implementing an Add-in.</summary>
 /// <seealso class='IDTExtensibility2' />
-public class VSDebugHelper: IDTExtensibility2, IDTCommandTarget {
+public class VSDebugHelper : IDTExtensibility2, IDTCommandTarget {
     #region private
     private DTE2 _application;
     private AddIn _addInInstance;
@@ -68,6 +68,7 @@ public class VSDebugHelper: IDTExtensibility2, IDTCommandTarget {
     /// <param term='custom'>Array of parameters that are host application specific.</param>
     /// <seealso class='IDTExtensibility2' />
     void IDTExtensibility2.OnBeginShutdown(ref Array custom) {
+        _DeleteCommands();
     }
 
 
@@ -107,7 +108,13 @@ public class VSDebugHelper: IDTExtensibility2, IDTCommandTarget {
         _vsCommandTextToCommandMap.TryGetValue(cmdName, out command);
 
         if (null != command) {
-            command.QueryStatus(cmdName, neededText, ref statusOption, ref commandText);
+            try {
+                command.QueryStatus(cmdName, neededText, ref statusOption, ref commandText);
+            } catch (Exception e) {
+                var commandWindow = _application.Windows.Item(EnvDTE.Constants.vsWindowKindCommandWindow).Object as CommandWindow;
+
+                commandWindow.OutputString("QueryStatus on " + cmdName + " failed with exception: " + e.ToString());
+            }
         }
     }
 

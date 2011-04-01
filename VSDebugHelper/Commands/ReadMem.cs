@@ -5,7 +5,7 @@ using EnvDTE;
 using EnvDTE80;
 using Microsoft.VisualStudio.Debugger.Interop;
 
-namespace VSMemoryDump.Commands {
+namespace VSMemoryDump.DebuggerCommands {
 
     class ReadMem : ICommand {
         #region members

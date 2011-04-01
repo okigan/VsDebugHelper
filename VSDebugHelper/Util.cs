@@ -8,7 +8,7 @@ using System.Globalization;
 using System.IO;
 
 namespace VSMemoryDump {
-    class Util {
+    public class Util {
         public static void WriteMemoryToFile(string fileName, int processId, int fromAddress, int lengthToRead) {
             IntPtr handle = NativeApi.OpenProcess(NativeApi.PROCESS_VM_READ, 0, (uint)processId);
 

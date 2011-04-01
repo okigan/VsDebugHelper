@@ -3,7 +3,7 @@ using Extensibility;
 using EnvDTE;
 using EnvDTE80;
 using System.Collections.Generic;
-using VSMemoryDump.Commands;
+using VSMemoryDump.DebuggerCommands;
 using VSMemoryDump;
 
 /// <summary>The object for implementing an Add-in.</summary>
@@ -35,13 +35,16 @@ public class VSDebugHelper : IDTExtensibility2, IDTCommandTarget {
     /// <param term='addInInst'>Object representing this Add-in.</param>
     /// <seealso class='IDTExtensibility2' />
     void IDTExtensibility2.OnConnection(object application, ext_ConnectMode connectMode, object addInInst, ref Array custom) {
-        _application = (DTE2)application;
-        _addInInstance = (AddIn)addInInst;
+        switch (connectMode) {
+            case ext_ConnectMode.ext_cm_UISetup: {
+                _application = (DTE2)application;
+                _addInInstance = (AddIn)addInInst;
 
-        _InitializeCommands();
-        _DeleteCommands();
-        _ConnectCommands();
-
+                _InitializeCommands();
+                _DeleteCommands();
+                _ConnectCommands();
+            } break;
+        }
     }
 
 
@@ -138,7 +141,7 @@ public class VSDebugHelper : IDTExtensibility2, IDTCommandTarget {
             Commands2 cmds = _application.Commands as Commands2;
 
             foreach (var c in _commands) {
-                _DeleteIndividualCommand(cmds, c.CommandText);
+                _DeleteIndividualCommand(cmds, CreateFullCommandName(c));
             }
         } catch (NotImplementedException e) {
             System.Diagnostics.Debugger.Log(0, "Diag", e.ToString());
@@ -154,7 +157,14 @@ public class VSDebugHelper : IDTExtensibility2, IDTCommandTarget {
 
 
             foreach (var c in _commands) {
-                Command command = cmds.Item(this.GetType().Name + "." + c.CommandText, -1);
+                Command command = null;
+
+                try {
+                    command = cmds.Item(CreateFullCommandName(c), -1);
+                } catch (ArgumentException) {
+                    //treat argument exception as command not found
+                }
+
                 if (null == command) {
                     command = _AddIndividualCommand(cmds, statusValue, c);
                 }
@@ -163,6 +173,10 @@ public class VSDebugHelper : IDTExtensibility2, IDTCommandTarget {
         } catch (NotImplementedException e) {
             System.Diagnostics.Debugger.Log(0, "Diag", e.ToString());
         }
+    }
+
+    private string CreateFullCommandName(ICommand c) {
+        return this.GetType().Name + "." + c.CommandText;
     }
 
     private Command _AddIndividualCommand(Commands2 cmds, vsCommandStatus statusValue, ICommand c) {
@@ -185,9 +199,9 @@ public class VSDebugHelper : IDTExtensibility2, IDTCommandTarget {
         return command;
     }
 
-    private void _DeleteIndividualCommand(Commands2 cmds, String commandString) {
+    private void _DeleteIndividualCommand(Commands2 cmds, String fullCommandName) {
         try {
-            Command cmdToDelete = cmds.Item(this.GetType().Name + commandString, -1);
+            Command cmdToDelete = cmds.Item(fullCommandName, -1);
             cmdToDelete.Delete();
         } catch (ArgumentException) {
             // The ArgumentException will be thrown if the command does not

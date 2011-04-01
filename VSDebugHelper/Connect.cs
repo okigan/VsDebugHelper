@@ -36,7 +36,7 @@ public class VSDebugHelper : IDTExtensibility2, IDTCommandTarget {
     /// <seealso class='IDTExtensibility2' />
     void IDTExtensibility2.OnConnection(object application, ext_ConnectMode connectMode, object addInInst, ref Array custom) {
         switch (connectMode) {
-            case ext_ConnectMode.ext_cm_UISetup: {
+            case ext_ConnectMode.ext_cm_AfterStartup: {
                 _application = (DTE2)application;
                 _addInInstance = (AddIn)addInInst;
 

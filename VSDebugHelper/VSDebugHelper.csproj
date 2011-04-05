@@ -80,6 +80,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CommandBar.resx" />
+    <EmbeddedResource Include="VSDebugHelper_IDTCommandTarget.Exec.sequencediagram.layout">
+      <DependentUpon>VSDebugHelper_IDTCommandTarget.Exec.sequencediagram</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="EnvDTE">
@@ -120,9 +123,6 @@
       <Link>VSMemoryDumpAddin.vs10.AddIn</Link>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="C:\Users\Administrator\Documents\Visual Studio 2008\Addins\VSMemoryDumpAddin - For Testing.AddIn">
-      <Link>VSMemoryDumpAddin - For Testing.AddIn</Link>
-    </Content>
     <Content Include="VSDebugHelper.AddIn" />
   </ItemGroup>
   <ItemGroup>
@@ -143,7 +143,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="deploy.vscontent" />
+    <None Include="VSDebugHelper_IDTCommandTarget.Exec.sequencediagram" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
   <PropertyGroup>

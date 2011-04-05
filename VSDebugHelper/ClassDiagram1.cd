@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="VSDebugHelper" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAIIAAAEAAAAgAAAgQAAABBABAAAAEBAABAAAAg=</HashCode>
+      <FileName>Connect.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VSMemoryDump.DebuggerCommands.ReadMem" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="1.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAEAQQAAAAAAAAAAAAAABAAAAAAAAJAAAA=</HashCode>
+      <FileName>Commands\ReadMem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VSMemoryDump.DebuggerCommands.WriteMem" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="1.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAEAQQAAAAAAAAAAAAAABAAAAAAAAJAAAA=</HashCode>
+      <FileName>Commands\WriteMem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="VSMemoryDump.ICommand" Collapsed="true">
+    <Position X="1.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQQAAAAAAAAAAAAAABAAAAAAAABAAAA=</HashCode>
+      <FileName>ICommand.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Tahoma" Size="10" />
+</ClassDiagram>

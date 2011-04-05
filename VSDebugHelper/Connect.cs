@@ -36,10 +36,11 @@ public class VSDebugHelper : IDTExtensibility2, IDTCommandTarget {
     /// <seealso class='IDTExtensibility2' />
     void IDTExtensibility2.OnConnection(object application, ext_ConnectMode connectMode, object addInInst, ref Array custom) {
         switch (connectMode) {
-            case ext_ConnectMode.ext_cm_AfterStartup: {
+            case ext_ConnectMode.ext_cm_Startup: {
                 _application = (DTE2)application;
                 _addInInstance = (AddIn)addInInst;
-
+            }
+            {
                 _InitializeCommands();
                 _DeleteCommands();
                 _ConnectCommands();
@@ -53,6 +54,8 @@ public class VSDebugHelper : IDTExtensibility2, IDTCommandTarget {
     /// <param term='custom'>Array of parameters that are host application specific.</param>
     /// <seealso class='IDTExtensibility2' />
     void IDTExtensibility2.OnDisconnection(ext_DisconnectMode disconnectMode, ref Array custom) {
+        _application = null;
+        _addInInstance = null;
     }
 
     /// <summary>Implements the OnAddInsUpdate method of the IDTExtensibility2 interface. Receives notification when the collection of Add-ins has changed.</summary>
@@ -65,6 +68,16 @@ public class VSDebugHelper : IDTExtensibility2, IDTCommandTarget {
     /// <param term='custom'>Array of parameters that are host application specific.</param>
     /// <seealso class='IDTExtensibility2' />
     void IDTExtensibility2.OnStartupComplete(ref Array custom) {
+        var outputWindow = _application.Windows.Item(EnvDTE.Constants.vsWindowKindCommandWindow).Object as CommandWindow;
+
+        if (null != outputWindow) {
+            var assembly = this.GetType().Assembly;
+            
+            outputWindow.OutputString(this.GetType().ToString() + "\r\n");
+            outputWindow.OutputString("Hashcode: " + assembly.GetHashCode() + "\r\n");
+            outputWindow.OutputString("Codebase: " + assembly.CodeBase + "\r\n");
+            outputWindow.OutputString("Author: Igor Okulist. 2011" + "\r\n");
+        }
     }
 
     /// <summary>Implements the OnBeginShutdown method of the IDTExtensibility2 interface. Receives notification that the host application is being unloaded.</summary>

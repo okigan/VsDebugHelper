@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" dslVersion="1.0.0.0" Id="6e34af00-85b1-4a41-9167-71ea84fb0baa" name="VSDebugHelper" mode="DotNet" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
+  <packagedElements>
+    <packageHasNamedElement>
+      <interaction Id="8c26c182-cd02-4b7b-8525-f57a42b65dd1" name="VSDebugHelper" collapseFragmentsFlag="false" isActiveClass="false" isAbstract="false" isLeaf="false" isReentrant="false">
+        <fragments>
+          <behaviorExecutionSpecification Id="caa56c06-d593-4d6c-8ea2-b85dd813eef3" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="9046ef2e-0230-4b2f-947c-f403ad31570a" LastKnownName="VSDebugHelper : VSDebugHelper" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="ecf9969e-8bca-4a75-ba7b-18997e8864bd" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="6be848e9-6863-447c-a563-b962adca5ea6" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="17bac0a6-d5cc-433e-9737-531f9d808933" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="5dfd385b-7f97-4df0-b195-91cbf8fb98a4" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="105062ee-1b0b-4eaf-89bd-5ce45d1cd127" LastKnownName="MessageOccurrenceSpecification" />
+              <operandOccurrenceSpecificationMoniker Id="722ce0e1-dab1-4e14-8802-9e2121fd406d" LastKnownName="OperandOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="0a8f4816-004b-4f1a-a0cd-0235fc0b420d" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="3f5dfca1-0b65-41fd-afc3-a8ce1a8f5a8d" LastKnownName="MessageOccurrenceSpecification" />
+              <operandOccurrenceSpecificationMoniker Id="00e192a2-ea97-44b4-9d46-8c64305a750f" LastKnownName="OperandOccurrenceSpecification" />
+              <operandOccurrenceSpecificationMoniker Id="636d8cbd-03e2-4cf7-9264-925d212a09f4" LastKnownName="OperandOccurrenceSpecification" />
+              <operandOccurrenceSpecificationMoniker Id="57864fab-7638-42b1-8ed3-d74b4743945a" LastKnownName="OperandOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="6be848e9-6863-447c-a563-b962adca5ea6" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="9527608f-8d04-4361-90fb-0153b49f3d3a" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="9046ef2e-0230-4b2f-947c-f403ad31570a" LastKnownName="VSDebugHelper : VSDebugHelper" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <lostFoundTarget Id="4c6bb8f7-f074-4985-899c-e641dff0e24d" name="LostFoundTarget" />
+          <messageOccurrenceSpecification Id="17bac0a6-d5cc-433e-9737-531f9d808933" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="9046ef2e-0230-4b2f-947c-f403ad31570a" LastKnownName="VSDebugHelper : VSDebugHelper" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="23a19569-92da-4acd-8763-10f850f4440b" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="ec9e3ee4-47d6-4950-a6b3-d9ee3c7bc593" LastKnownName="Dictionary&lt;String,ICommand&gt;" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="4ac02a7e-7455-4fee-ae33-be0fe22fe772" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="fb2a7935-4eb1-4d2a-9640-27f72fb718cf" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="4baf1dc8-5382-4c47-bc8b-05f771bf7b00" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="2d24100d-2280-4b39-80e6-1417c1806171" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="fb2a7935-4eb1-4d2a-9640-27f72fb718cf" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="b5c57366-d669-4e78-9e33-df268fc9e00c" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="ec9e3ee4-47d6-4950-a6b3-d9ee3c7bc593" LastKnownName="Dictionary&lt;String,ICommand&gt;" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="5dfd385b-7f97-4df0-b195-91cbf8fb98a4" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="9046ef2e-0230-4b2f-947c-f403ad31570a" LastKnownName="VSDebugHelper : VSDebugHelper" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="4baf1dc8-5382-4c47-bc8b-05f771bf7b00" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="ec9e3ee4-47d6-4950-a6b3-d9ee3c7bc593" LastKnownName="Dictionary&lt;String,ICommand&gt;" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="2d24100d-2280-4b39-80e6-1417c1806171" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="ec9e3ee4-47d6-4950-a6b3-d9ee3c7bc593" LastKnownName="Dictionary&lt;String,ICommand&gt;" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="105062ee-1b0b-4eaf-89bd-5ce45d1cd127" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="9046ef2e-0230-4b2f-947c-f403ad31570a" LastKnownName="VSDebugHelper : VSDebugHelper" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="4ac02a7e-7455-4fee-ae33-be0fe22fe772" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="4ab6e2c7-bf0c-425f-9d05-8b22747e7649" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="ec9e3ee4-47d6-4950-a6b3-d9ee3c7bc593" LastKnownName="Dictionary&lt;String,ICommand&gt;" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <combinedFragment Id="4a718e65-c8f8-44d3-96f5-06be7dd11eb0" name="CombinedFragment1" interactionOperator="Alt" customInteractionOperator="Try">
+            <coveredLifelines>
+              <lifelineMoniker Id="9046ef2e-0230-4b2f-947c-f403ad31570a" LastKnownName="VSDebugHelper : VSDebugHelper" />
+              <lifelineMoniker Id="73a2ff44-26fa-4fe5-be4c-dfe2c0db54f9" LastKnownName="ICommand : ICommand" />
+            </coveredLifelines>
+            <operands>
+              <interactionOperand Id="49bc63f4-5b51-473f-a45a-57e912939dd3" name="InteractionOperand1">
+                <coveredLifelines>
+                  <lifelineMoniker Id="9046ef2e-0230-4b2f-947c-f403ad31570a" LastKnownName="VSDebugHelper : VSDebugHelper" />
+                  <lifelineMoniker Id="73a2ff44-26fa-4fe5-be4c-dfe2c0db54f9" LastKnownName="ICommand : ICommand" />
+                </coveredLifelines>
+                <guard>
+                  <interactionConstraint Id="1acdec37-5bd0-47c7-a8f3-49fa1fdb4ac2" guardText="try" />
+                </guard>
+                <operandOccurrenceSpecifications>
+                  <operandOccurrenceSpecificationMoniker Id="722ce0e1-dab1-4e14-8802-9e2121fd406d" LastKnownName="OperandOccurrenceSpecification" />
+                  <operandOccurrenceSpecificationMoniker Id="00e192a2-ea97-44b4-9d46-8c64305a750f" LastKnownName="OperandOccurrenceSpecification" />
+                  <operandOccurrenceSpecificationMoniker Id="45383b56-22a8-4c56-ac73-3c126d93d195" LastKnownName="OperandOccurrenceSpecification" />
+                  <operandOccurrenceSpecificationMoniker Id="23c1c8c7-39f6-4c07-9dfd-2c9fa8186c27" LastKnownName="OperandOccurrenceSpecification" />
+                </operandOccurrenceSpecifications>
+              </interactionOperand>
+              <interactionOperand Id="1e7e5fb0-b091-40c2-8ec9-2035ed20b0dd" name="InteractionOperand2">
+                <coveredLifelines>
+                  <lifelineMoniker Id="9046ef2e-0230-4b2f-947c-f403ad31570a" LastKnownName="VSDebugHelper : VSDebugHelper" />
+                  <lifelineMoniker Id="73a2ff44-26fa-4fe5-be4c-dfe2c0db54f9" LastKnownName="ICommand : ICommand" />
+                </coveredLifelines>
+                <guard>
+                  <interactionConstraint Id="0ef6ca9b-b11c-44cf-a8dc-e49eda120d86" guardText="catch (Exception)" />
+                </guard>
+                <operandOccurrenceSpecifications>
+                  <operandOccurrenceSpecificationMoniker Id="636d8cbd-03e2-4cf7-9264-925d212a09f4" LastKnownName="OperandOccurrenceSpecification" />
+                  <operandOccurrenceSpecificationMoniker Id="57864fab-7638-42b1-8ed3-d74b4743945a" LastKnownName="OperandOccurrenceSpecification" />
+                  <operandOccurrenceSpecificationMoniker Id="77a7311d-c391-49ab-8ee3-20ce7ee5a7bb" LastKnownName="OperandOccurrenceSpecification" />
+                  <operandOccurrenceSpecificationMoniker Id="ad7204be-d49b-435d-8406-0ebfe28660f8" LastKnownName="OperandOccurrenceSpecification" />
+                </operandOccurrenceSpecifications>
+              </interactionOperand>
+            </operands>
+          </combinedFragment>
+          <operandOccurrenceSpecification Id="45383b56-22a8-4c56-ac73-3c126d93d195" name="OperandOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="73a2ff44-26fa-4fe5-be4c-dfe2c0db54f9" LastKnownName="ICommand : ICommand" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="722ce0e1-dab1-4e14-8802-9e2121fd406d" name="OperandOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="9046ef2e-0230-4b2f-947c-f403ad31570a" LastKnownName="VSDebugHelper : VSDebugHelper" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="13ca4322-ad72-4133-8000-f35bdaa8ea68" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="73a2ff44-26fa-4fe5-be4c-dfe2c0db54f9" LastKnownName="ICommand : ICommand" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="8ecdac42-fe9d-43b0-8575-c93c203970b1" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="c73ad24f-8833-41cf-a4fc-a899a6a468dd" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="51208254-4a7f-4b73-ab27-0e071689c8dd" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="78947787-f6e5-47d2-9af3-0ae0ac3149c9" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="c73ad24f-8833-41cf-a4fc-a899a6a468dd" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="64eccc6a-3369-46b4-b789-976643f45dae" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="73a2ff44-26fa-4fe5-be4c-dfe2c0db54f9" LastKnownName="ICommand : ICommand" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="0a8f4816-004b-4f1a-a0cd-0235fc0b420d" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="9046ef2e-0230-4b2f-947c-f403ad31570a" LastKnownName="VSDebugHelper : VSDebugHelper" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="51208254-4a7f-4b73-ab27-0e071689c8dd" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="73a2ff44-26fa-4fe5-be4c-dfe2c0db54f9" LastKnownName="ICommand : ICommand" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="3f5dfca1-0b65-41fd-afc3-a8ce1a8f5a8d" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="9046ef2e-0230-4b2f-947c-f403ad31570a" LastKnownName="VSDebugHelper : VSDebugHelper" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="78947787-f6e5-47d2-9af3-0ae0ac3149c9" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="73a2ff44-26fa-4fe5-be4c-dfe2c0db54f9" LastKnownName="ICommand : ICommand" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="8ecdac42-fe9d-43b0-8575-c93c203970b1" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="4ec41b82-0729-4591-acda-bc48ad3d47a0" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="73a2ff44-26fa-4fe5-be4c-dfe2c0db54f9" LastKnownName="ICommand : ICommand" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="23c1c8c7-39f6-4c07-9dfd-2c9fa8186c27" name="OperandOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="73a2ff44-26fa-4fe5-be4c-dfe2c0db54f9" LastKnownName="ICommand : ICommand" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="00e192a2-ea97-44b4-9d46-8c64305a750f" name="OperandOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="9046ef2e-0230-4b2f-947c-f403ad31570a" LastKnownName="VSDebugHelper : VSDebugHelper" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="77a7311d-c391-49ab-8ee3-20ce7ee5a7bb" name="OperandOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="73a2ff44-26fa-4fe5-be4c-dfe2c0db54f9" LastKnownName="ICommand : ICommand" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="636d8cbd-03e2-4cf7-9264-925d212a09f4" name="OperandOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="9046ef2e-0230-4b2f-947c-f403ad31570a" LastKnownName="VSDebugHelper : VSDebugHelper" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="57864fab-7638-42b1-8ed3-d74b4743945a" name="OperandOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="9046ef2e-0230-4b2f-947c-f403ad31570a" LastKnownName="VSDebugHelper : VSDebugHelper" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="ad7204be-d49b-435d-8406-0ebfe28660f8" name="OperandOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="73a2ff44-26fa-4fe5-be4c-dfe2c0db54f9" LastKnownName="ICommand : ICommand" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="ecf9969e-8bca-4a75-ba7b-18997e8864bd" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="e39faae2-7cbe-4fa7-9741-67f74f65de8b" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="9046ef2e-0230-4b2f-947c-f403ad31570a" LastKnownName="VSDebugHelper : VSDebugHelper" />
+            </covered>
+          </executionOccurrenceSpecification>
+        </fragments>
+        <lifelines>
+          <lifeline Id="9046ef2e-0230-4b2f-947c-f403ad31570a" name="VSDebugHelper : VSDebugHelper" isActor="false" lifelineDisplayName="VSDebugHelper : VSDebugHelper" referencedInstance="(Assembly=&quot;$(9af7da46-3ff5-49a2-8ba2-c6b4c432c26d.OutputPathUri)&quot; Type=VSDebugHelper ObjectInstance=&quot;Object instance 6&quot;)" referencedType="VSDebugHelper">
+            <referencesInternal>
+              <reference Id="6a6ff9a0-b904-4976-a744-949731093417" handle="+ Id.Equals(&quot;Microsoft.Solution.ClassView&quot;) /&#xD;&#xA;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Namespace=::)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(9af7da46-3ff5-49a2-8ba2-c6b4c432c26d.OutputPathUri)&amp;quot; Type=VSDebugHelper)&quot;)" tag="DGQL" />
+              <reference Id="ea6b1b32-5b67-43f1-88a4-5a85738e08bc" handle="(Assembly=&quot;$(9af7da46-3ff5-49a2-8ba2-c6b4c432c26d.OutputPathUri)&quot; Type=VSDebugHelper)" tag="DGML" />
+            </referencesInternal>
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="6be848e9-6863-447c-a563-b962adca5ea6" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="ecf9969e-8bca-4a75-ba7b-18997e8864bd" LastKnownName="ExecutionOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="ec9e3ee4-47d6-4950-a6b3-d9ee3c7bc593" name="Dictionary&lt;String,ICommand&gt;" isActor="false" lifelineDisplayName="Dictionary&lt;String,ICommand&gt;" referencedInstance="(Assembly=&quot;$(9af7da46-3ff5-49a2-8ba2-c6b4c432c26d.OutputPathUri)&quot; Type=VSDebugHelper Member=_vsCommandTextToCommandMap ObjectInstance=&quot;Object instance 10&quot;)" referencedType="System.Collections.Generic.Dictionary&lt;String,ICommand&gt;">
+            <referencesInternal>
+              <reference Id="2a9c13f0-149a-4714-afab-83c00285f9f9" handle="+ Id.Equals(&quot;Microsoft.Solution.ClassView&quot;) /&#xD;&#xA;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Namespace=System.Collections.Generic)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System.Collections.Generic Type=(Name=Dictionary GenericParameterCount=2))&quot;)" tag="DGQL" />
+              <reference Id="fb94c675-a5cf-4db7-964c-6470a73dad7a" handle="(Assembly=&quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&quot; Namespace=System.Collections.Generic Type=(Name=Dictionary GenericParameterCount=2))" tag="DGML" />
+            </referencesInternal>
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="fb2a7935-4eb1-4d2a-9640-27f72fb718cf" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="4ac02a7e-7455-4fee-ae33-be0fe22fe772" LastKnownName="ExecutionOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="73a2ff44-26fa-4fe5-be4c-dfe2c0db54f9" name="ICommand : ICommand" isActor="false" lifelineDisplayName="ICommand : ICommand" referencedInstance="(Assembly=&quot;$(9af7da46-3ff5-49a2-8ba2-c6b4c432c26d.OutputPathUri)&quot; Type=VSDebugHelper Member=(Name=Exec ExplicitInterface=(Assembly=$(SystemRootUri)/assembly/GAC/EnvDTE/8.0.0.0__b03f5f7f11d50a3a/EnvDTE.dll Namespace=EnvDTE Type=IDTCommandTarget) OverloadingParameters=[(Assembly=$(FxRootUri)/v2.0.50727/mscorlib.dll Namespace=System Type=String),(Assembly=$(SystemRootUri)/assembly/GAC/EnvDTE/8.0.0.0__b03f5f7f11d50a3a/EnvDTE.dll Namespace=EnvDTE Type=vsCommandExecOption),(Assembly=$(FxRootUri)/v2.0.50727/mscorlib.dll Namespace=System Type=Object),(Assembly=$(FxRootUri)/v2.0.50727/mscorlib.dll Namespace=System Type=Object),(Assembly=$(FxRootUri)/v2.0.50727/mscorlib.dll Namespace=System Type=Boolean)]) Statement=[1,2,1,2] ObjectInstance=&quot;Object instance 8&quot;)" referencedType="VSMemoryDump.ICommand">
+            <referencesInternal>
+              <reference Id="0c2729e9-4984-4f32-a4b1-457974cc9977" handle="+ Id.Equals(&quot;Microsoft.Solution.ClassView&quot;) /&#xD;&#xA;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Namespace=VSMemoryDump)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(9af7da46-3ff5-49a2-8ba2-c6b4c432c26d.OutputPathUri)&amp;quot; Namespace=VSMemoryDump Type=ICommand)&quot;)" tag="DGQL" />
+              <reference Id="4ee83ab7-3104-4133-a3ac-b3a54ccb2b18" handle="(Assembly=&quot;$(9af7da46-3ff5-49a2-8ba2-c6b4c432c26d.OutputPathUri)&quot; Namespace=VSMemoryDump Type=ICommand)" tag="DGML" />
+            </referencesInternal>
+            <topLevelOccurrences>
+              <operandOccurrenceSpecificationMoniker Id="45383b56-22a8-4c56-ac73-3c126d93d195" LastKnownName="OperandOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="c73ad24f-8833-41cf-a4fc-a899a6a468dd" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="8ecdac42-fe9d-43b0-8575-c93c203970b1" LastKnownName="ExecutionOccurrenceSpecification" />
+              <operandOccurrenceSpecificationMoniker Id="23c1c8c7-39f6-4c07-9dfd-2c9fa8186c27" LastKnownName="OperandOccurrenceSpecification" />
+              <operandOccurrenceSpecificationMoniker Id="77a7311d-c391-49ab-8ee3-20ce7ee5a7bb" LastKnownName="OperandOccurrenceSpecification" />
+              <operandOccurrenceSpecificationMoniker Id="ad7204be-d49b-435d-8406-0ebfe28660f8" LastKnownName="OperandOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+        </lifelines>
+        <messages>
+          <message Id="63edca51-58cf-4c18-b726-de4f2c3be816" name="IDTCommandTarget.Exec" messageKind="Found" messageSort="AsynchCall" createSelfMessage="false">
+            <referencesInternal>
+              <reference Id="b0e4bc6d-9f2b-452a-9a82-55d7f44337a1" handle="+ Id.Equals(&quot;Microsoft.Solution.ClassView&quot;) /&#xD;&#xA;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Namespace=::)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(9af7da46-3ff5-49a2-8ba2-c6b4c432c26d.OutputPathUri)&amp;quot; Type=VSDebugHelper)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(9af7da46-3ff5-49a2-8ba2-c6b4c432c26d.OutputPathUri)&amp;quot; Type=VSDebugHelper Member=(Name=Exec ExplicitInterface=(Assembly=file:///C:/WINDOWS/assembly/GAC/EnvDTE/8.0.0.0__b03f5f7f11d50a3a/EnvDTE.dll Namespace=EnvDTE Type=IDTCommandTarget) OverloadingParameters=[(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System Type=String),(Assembly=&amp;quot;$(SystemRootUri)/assembly/GAC/EnvDTE/8.0.0.0__b03f5f7f11d50a3a/EnvDTE.dll&amp;quot; Namespace=EnvDTE Type=vsCommandExecOption),(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System Type=Object),(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System Type=Object),(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System Type=Boolean)]))&quot;)" tag="DGQL" />
+              <reference Id="6cd51a07-c78a-4fd4-bbc1-9c775a5a57a9" handle="(Assembly=&quot;$(9af7da46-3ff5-49a2-8ba2-c6b4c432c26d.OutputPathUri)&quot; Type=VSDebugHelper Member=(Name=Exec ExplicitInterface=(Assembly=file:///C:/WINDOWS/assembly/GAC/EnvDTE/8.0.0.0__b03f5f7f11d50a3a/EnvDTE.dll Namespace=EnvDTE Type=IDTCommandTarget) OverloadingParameters=[(Assembly=&quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&quot; Namespace=System Type=String),(Assembly=&quot;$(SystemRootUri)/assembly/GAC/EnvDTE/8.0.0.0__b03f5f7f11d50a3a/EnvDTE.dll&quot; Namespace=EnvDTE Type=vsCommandExecOption),(Assembly=&quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&quot; Namespace=System Type=Object),(Assembly=&quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&quot; Namespace=System Type=Object),(Assembly=&quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&quot; Namespace=System Type=Boolean)]))" tag="DGML" />
+            </referencesInternal>
+            <sendEvent>
+              <lostFoundTargetMoniker Id="4c6bb8f7-f074-4985-899c-e641dff0e24d" LastKnownName="LostFoundTarget" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="17bac0a6-d5cc-433e-9737-531f9d808933" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="18975731-d0cc-4322-97fc-88744a1a3631" name="TryGetValue" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <referencesInternal>
+              <reference Id="95fcf04b-d089-4112-ae3f-0c4dfc5f55c5" handle="+ Id.Equals(&quot;Microsoft.Solution.ClassView&quot;) /&#xD;&#xA;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Namespace=System.Collections.Generic)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System.Collections.Generic Type=(Name=Dictionary GenericParameterCount=2))&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System.Collections.Generic Type=(Name=Dictionary GenericParameterCount=2) Member=(Name=TryGetValue OverloadingParameters=[(Type=TKey),(Type=TValue)]))&quot;)" tag="DGQL" />
+              <reference Id="9b861138-d2e4-4ea7-bff7-0c99b979648b" handle="(Assembly=&quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&quot; Namespace=System.Collections.Generic Type=(Name=Dictionary GenericParameterCount=2) Member=(Name=TryGetValue OverloadingParameters=[(Type=TKey),(Type=TValue)]))" tag="DGML" />
+            </referencesInternal>
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="5dfd385b-7f97-4df0-b195-91cbf8fb98a4" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="4baf1dc8-5382-4c47-bc8b-05f771bf7b00" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="b0b559f6-bee4-4bae-9aa1-23ac9a29099f" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="2d24100d-2280-4b39-80e6-1417c1806171" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="105062ee-1b0b-4eaf-89bd-5ce45d1cd127" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="383bd264-8acc-4384-a25b-501dcba0229e" name="Exec" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false" signatureText="command.Exec(...)">
+            <referencesInternal>
+              <reference Id="5fcccc16-7a6e-4483-b5c0-27e2a42e937e" handle="+ Id.Equals(&quot;Microsoft.Solution.ClassView&quot;) /&#xD;&#xA;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Namespace=VSMemoryDump)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(9af7da46-3ff5-49a2-8ba2-c6b4c432c26d.OutputPathUri)&amp;quot; Namespace=VSMemoryDump Type=ICommand)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(9af7da46-3ff5-49a2-8ba2-c6b4c432c26d.OutputPathUri)&amp;quot; Namespace=VSMemoryDump Type=ICommand Member=(Name=Exec OverloadingParameters=[(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System Type=String),(Assembly=&amp;quot;$(SystemRootUri)/assembly/GAC/EnvDTE/8.0.0.0__b03f5f7f11d50a3a/EnvDTE.dll&amp;quot; Namespace=EnvDTE Type=vsCommandExecOption),(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System Type=Object),(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System Type=Object),(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System Type=Boolean)]))&quot;)" tag="DGQL" />
+              <reference Id="c5fc8bc5-32d7-4dc8-8512-bcf04859c1e2" handle="(Assembly=&quot;$(9af7da46-3ff5-49a2-8ba2-c6b4c432c26d.OutputPathUri)&quot; Namespace=VSMemoryDump Type=ICommand Member=(Name=Exec OverloadingParameters=[(Assembly=&quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&quot; Namespace=System Type=String),(Assembly=&quot;$(SystemRootUri)/assembly/GAC/EnvDTE/8.0.0.0__b03f5f7f11d50a3a/EnvDTE.dll&quot; Namespace=EnvDTE Type=vsCommandExecOption),(Assembly=&quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&quot; Namespace=System Type=Object),(Assembly=&quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&quot; Namespace=System Type=Object),(Assembly=&quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&quot; Namespace=System Type=Boolean)]))" tag="DGML" />
+            </referencesInternal>
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="0a8f4816-004b-4f1a-a0cd-0235fc0b420d" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="51208254-4a7f-4b73-ab27-0e071689c8dd" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="7f2c53d1-dc52-4517-8a7a-36ce7002175a" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="78947787-f6e5-47d2-9af3-0ae0ac3149c9" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="3f5dfca1-0b65-41fd-afc3-a8ce1a8f5a8d" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+        </messages>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="9527608f-8d04-4361-90fb-0153b49f3d3a" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="e39faae2-7cbe-4fa7-9741-67f74f65de8b" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="b5c57366-d669-4e78-9e33-df268fc9e00c" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="4ab6e2c7-bf0c-425f-9d05-8b22747e7649" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="64eccc6a-3369-46b4-b789-976643f45dae" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="4ec41b82-0729-4591-acda-bc48ad3d47a0" name="ExecutionEvent" />
+    </packageHasNamedElement>
+  </packagedElements>
+</SequenceDesignerModel>

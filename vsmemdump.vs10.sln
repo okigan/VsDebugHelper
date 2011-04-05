@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSDebugHelper", "VSDebugHel
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestProjectCpp", "TestProjectCpp\TestProjectCpp.vcxproj", "{F1C4BD7E-48CC-43F5-A789-B607419977D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSDebugHelperVSIX", "VSDebugHelperVSIX\VSDebugHelperVSIX.csproj", "{CAF09602-0527-4C1E-8691-45B38CEAA066}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = vsmemdump.vs10.vsmdi
@@ -38,6 +40,16 @@ Global
 		{F1C4BD7E-48CC-43F5-A789-B607419977D1}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{F1C4BD7E-48CC-43F5-A789-B607419977D1}.Release|Win32.ActiveCfg = Release|Win32
 		{F1C4BD7E-48CC-43F5-A789-B607419977D1}.Release|Win32.Build.0 = Release|Win32
+		{CAF09602-0527-4C1E-8691-45B38CEAA066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAF09602-0527-4C1E-8691-45B38CEAA066}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAF09602-0527-4C1E-8691-45B38CEAA066}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{CAF09602-0527-4C1E-8691-45B38CEAA066}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{CAF09602-0527-4C1E-8691-45B38CEAA066}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{CAF09602-0527-4C1E-8691-45B38CEAA066}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAF09602-0527-4C1E-8691-45B38CEAA066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAF09602-0527-4C1E-8691-45B38CEAA066}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{CAF09602-0527-4C1E-8691-45B38CEAA066}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{CAF09602-0527-4C1E-8691-45B38CEAA066}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

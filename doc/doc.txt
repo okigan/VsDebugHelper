@@ -1,3 +1,6 @@
+## Download
+[Download VSDebugHelper.vsi](VSDebugHelper.vsi "VSDebugHelper.vsi")
+
 ## Introduction
 At times I need to look into a processing step of a pipeline, either to
 identify a performance improvement or as part of impact analysis. If 
@@ -89,7 +92,7 @@ documentation is very difficult to find. Additionally, there significant
 disconnect as what is available to managed extension vs unmanaged
 extensions. It is rather clear that Visual Studio is an unmanaged
 application, yet there is no information how to interact from an unmanaged 
-addin. And interestingly enough, extensebility functionality for 'Visualizer' 
+addin. And interestingly enough, extensibility functionality for 'Visualizer' 
 has been is clearly cut off.
 
 Besides being a nuisance the above boils down to on issue that there is no way to
@@ -97,9 +100,9 @@ work through Visual Studio to modify a region of memory. Hence when readmem comm
 is used (to load a buffer from file) the Watch and Memory Window display will be 
 out of sync with actual memory contents. 
 
-Overall sequence of execution if pretty simple. Visual studio calls CommandTarget 
+Overall sequence of execution is pretty simple. Visual studio calls CommandTarget 
 interface and its implementation will dispatch the call ICommand implementation based 
 on the command string. ICommand implementation is responsible for parsing command 
-parameters and etc. Simplified digram is shown below:
+parameters and etc. Simplified diagram is shown below:
 
 ![alt text](execseq.png "Sequence")

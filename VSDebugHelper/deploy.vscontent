@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <VSContent xmlns="http://schemas.microsoft.com/developer/vscontent/2005">
   <Content>
-    <FileName>VSMemoryDumpAddin.AddIn</FileName>
-    <FileName>Project1.dll</FileName>
-    <DisplayName>VSMemoryDumpAddin</DisplayName>
+    <FileName>VSDebugHelper.AddIn</FileName>
+    <FileName>VSDebugHelper.dll</FileName>
+    <DisplayName>VSDebugHelper</DisplayName>
     <Description>Read/Write memory regions of debugged process to/from file.</Description>
     <FileContentType>Addin</FileContentType>
-    <ContentVersion>2.0</ContentVersion>
+    <ContentVersion>1.0</ContentVersion>
   </Content>
 </VSContent>

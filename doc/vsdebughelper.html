@@ -1,3 +1,7 @@
+<h2>Download</h2>
+
+<p><a href="VSDebugHelper.vsi" title="VSDebugHelper.vsi">Download VSDebugHelper.vsi</a></p>
+
 <h2>Introduction</h2>
 
 <p>At times I need to look into a processing step of a pipeline, either to
@@ -89,6 +93,9 @@ all expressions can be resolved in the watch window.</p>
 
 <h2>Installation</h2>
 
+<p>Proceed with download and install at the top of the article. After the installation
+confirm addin is installed and set to be loaded at startup as shown below:</p>
+
 <p><img src="manager.png" alt="alt text" title="Color" /></p>
 
 <h2>Addin internals</h2>
@@ -98,7 +105,7 @@ documentation is very difficult to find. Additionally, there significant
 disconnect as what is available to managed extension vs unmanaged
 extensions. It is rather clear that Visual Studio is an unmanaged
 application, yet there is no information how to interact from an unmanaged 
-addin. And interestingly enough, extensebility functionality for 'Visualizer' 
+addin. And interestingly enough, extensibility functionality for 'Visualizer' 
 has been is clearly cut off.</p>
 
 <p>Besides being a nuisance the above boils down to on issue that there is no way to
@@ -106,9 +113,9 @@ work through Visual Studio to modify a region of memory. Hence when readmem comm
 is used (to load a buffer from file) the Watch and Memory Window display will be 
 out of sync with actual memory contents. </p>
 
-<p>Overall sequence of execution if pretty simple. Visual studio calls CommandTarget 
+<p>Overall sequence of execution is pretty simple. Visual studio calls CommandTarget 
 interface and its implementation will dispatch the call ICommand implementation based 
 on the command string. ICommand implementation is responsible for parsing command 
-parameters and etc. Simplified digram is shown below:</p>
+parameters and etc. Simplified diagram is shown below:</p>
 
 <p><img src="execseq.png" alt="alt text" title="Sequence" /></p>

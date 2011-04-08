@@ -12,7 +12,7 @@
     <NoStandardLibraries>false</NoStandardLibraries>
     <AssemblyName>VSDebugHelper</AssemblyName>
     <RootNamespace>VSDebugHelper</RootNamespace>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <RunPostBuildEvent>Always</RunPostBuildEvent>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -119,10 +119,10 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\Visual Studio 2010\Addins\VSMemoryDumpAddin.vs10.AddIn">
+    <None Include="..\..\..\Visual Studio 2010\Addins\VSMemoryDumpAddin.vs10.AddIn">
       <Link>VSMemoryDumpAddin.vs10.AddIn</Link>
       <SubType>Designer</SubType>
-    </Content>
+    </None>
     <Content Include="VSDebugHelper.AddIn" />
   </ItemGroup>
   <ItemGroup>

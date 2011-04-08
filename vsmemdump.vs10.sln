@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestProjectCpp", "TestProje
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSDebugHelperVSIX", "VSDebugHelperVSIX\VSDebugHelperVSIX.csproj", "{CAF09602-0527-4C1E-8691-45B38CEAA066}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "VSDebugHelperSetup", "VSDebugHelperSetup\VSDebugHelperSetup.vdproj", "{A0564BD9-2E7B-43D2-AAE4-37B211CCC149}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = vsmemdump.vs10.vsmdi
@@ -50,6 +52,12 @@ Global
 		{CAF09602-0527-4C1E-8691-45B38CEAA066}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{CAF09602-0527-4C1E-8691-45B38CEAA066}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{CAF09602-0527-4C1E-8691-45B38CEAA066}.Release|Win32.ActiveCfg = Release|Any CPU
+		{A0564BD9-2E7B-43D2-AAE4-37B211CCC149}.Debug|Any CPU.ActiveCfg = Debug
+		{A0564BD9-2E7B-43D2-AAE4-37B211CCC149}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{A0564BD9-2E7B-43D2-AAE4-37B211CCC149}.Debug|Win32.ActiveCfg = Debug
+		{A0564BD9-2E7B-43D2-AAE4-37B211CCC149}.Release|Any CPU.ActiveCfg = Release
+		{A0564BD9-2E7B-43D2-AAE4-37B211CCC149}.Release|Mixed Platforms.ActiveCfg = Release
+		{A0564BD9-2E7B-43D2-AAE4-37B211CCC149}.Release|Win32.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

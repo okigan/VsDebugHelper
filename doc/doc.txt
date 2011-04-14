@@ -81,10 +81,16 @@ And here how the raw data displayed by an external viewer (IrfranView):
 ![alt text](color.png "Color")
 
 ## Installation
+### Installation by direct download
 Proceed with download and install at the top of the article. After the installation
 confirm addin is installed and set to be loaded at startup as shown below:
 
 ![alt text](manager.png "Color")
+
+### Installation through Extension Manager
+Alternatevly, the addin can be installed from within Visual Studio though
+the use of Extension Manager as shown below:
+![](extmanager.png "Extension Manager")
 
 ## Addin internals
 Visual Studio has a number of extensibility technologies, but useful
